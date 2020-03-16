@@ -63,3 +63,4 @@ typings/
 # folders to ignore
 .idea
 dist/
+.DS_Store

@@ -2,15 +2,16 @@
 <template>
     <div class="index">
         index page
+        <ServiceBar />
     </div>
 </template>
 
 <script>
-    //import x from ''
+    import ServiceBar from '../components/ServiceBar'
     export default {
         name: "index",
         components: {
-
+           ServiceBar
         },
         data () {
             return {

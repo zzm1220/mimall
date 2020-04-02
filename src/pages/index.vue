@@ -86,7 +86,7 @@
                 <div class="prdIntro">
                   <p class="prd-name">{{product.name}}</p>
                   <p class="prd-subtitle">{{product.subtitle}}</p>
-                  <div class="prd-price">{{product.price}}</div>
+                  <div class="prd-price" @click="addCart">{{product.price}}</div>
                 </div>
               </div>
             </div>
@@ -95,6 +95,9 @@
       </div>
     </div>
     <ServiceBar />
+    <Modal title="添加购物车成功" sureText="查看购物车" btnType="3" :showModal="showModal" @submit="goCart" @cancel="showModal=false">
+      <template v-slot:body>已经添加到购物车啦</template>
+    </Modal>
   </div>
 </template>
 
@@ -103,15 +106,19 @@ import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/dist/css/swiper.css";
 
 import ServiceBar from "../components/ServiceBar";
+import Modal from "../components/Modal";
+
 export default {
   name: "index",
   components: {
     swiper,
     swiperSlide,
-    ServiceBar
+    ServiceBar,
+    Modal
   },
   data() {
     return {
+      showModal: false,
       swiperOption: {
         pagination: {
           el: ".swiper-pagination",
@@ -218,6 +225,12 @@ export default {
           res.list = res.list.slice(6, 14);
           this.productsList = [res.list.slice(0, 4), res.list.slice(4, 8)];
         });
+    },
+    addCart() {
+         this.showModal = true;                    
+    },
+    goCart() {
+      this.$router.push('/cart');
     }
   },
   mounted() {
@@ -413,10 +426,10 @@ export default {
                   font-weight: 700;
                   cursor: pointer;
                   &:after {
-                      content: "";
-                      @include bgImg(22px, 22px, "/imgs/icon-cart-hover.png");
-                      margin-left: 5px;
-                      vertical-align: middle;
+                    content: "";
+                    @include bgImg(22px, 22px, "/imgs/icon-cart-hover.png");
+                    margin-left: 5px;
+                    vertical-align: middle;
                   }
                 }
               }

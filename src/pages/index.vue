@@ -56,12 +56,12 @@
       </div>
       <div class="ads-box">
         <a :href="`/product/${ad.id}`" v-for="ad in adsList" :key="ad.id">
-          <img :src="ad.img" />
+          <img v-lazy="ad.img" />
         </a>
       </div>
       <div class="banner">
         <a href="/product/30">
-          <img src="/imgs/banner-1.png" alt="banner" />
+          <img v-lazy="'/imgs/banner-1.png'" alt="banner" />
         </a>
       </div>
     </div>
@@ -73,7 +73,7 @@
         <div class="container-content">
           <div class="content-banner">
             <a href="/product/35">
-              <img src="/imgs/mix-alpha.jpg" alt="banner" />
+              <img v-lazy="'/imgs/mix-alpha.jpg'" alt="banner" />
             </a>
           </div>
           <div class="content-products">
@@ -81,7 +81,7 @@
               <div class="item" v-for="product in productList" :key="product.id">
                 <h3>新品</h3>
                 <div class="prdImg">
-                  <img :src="product.mainImage" :alt="product.name" />
+                  <img v-lazy="product.mainImage" :alt="product.name" />
                 </div>
                 <div class="prdIntro">
                   <p class="prd-name">{{product.name}}</p>

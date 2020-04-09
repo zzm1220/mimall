@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Index from "./pages/index";
+import Login from "./pages/login";
 import Home from "./pages/home";
 import Product from "./pages/product";
 import Detail from "./pages/detail";
@@ -35,6 +36,11 @@ const routes = [
                 component: Detail
             }
         ]
+    },
+    {
+        path: "/login",
+        name: "login",
+        component: Login
     },
     {
         path: "/cart",
